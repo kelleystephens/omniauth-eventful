@@ -19,7 +19,7 @@ module OmniAuth
         access_token_url: "http://eventful.com/oauth/access_token"
       }
 
-      uid{ raw_info["user"]["username"] }
+      uid{ info[:username] }
 
       info do
         name = [raw_info["user"]["first_name"], raw_info["user"]["last_name"]].compact.join(' ').strip
