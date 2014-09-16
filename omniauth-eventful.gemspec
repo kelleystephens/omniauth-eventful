@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.name          = "omniauth-eventful"
   spec.version       = Omniauth::Eventful::VERSION
   spec.authors       = ["Kelley Stephens"]
-  spec.email         = ["kelley.stephens@outlook.com"]
-  spec.summary       = %q{An Eventful OAuth strategy for OmniAuth}
-  spec.description   = %q{An Eventful OAuth strategy for OmniAuth}
-  spec.homepage      = ""
+  spec.email         = ["kelley@kelleystephens.com"]
+  spec.summary       = %q{An Eventful strategy for OmniAuth}
+  spec.description   = %q{An Eventful strategy for OmniAuth}
+  spec.homepage      = "https://github.com/kelleystephens/omniauth-eventful"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

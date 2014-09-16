@@ -1,6 +1,9 @@
 # Omniauth::Eventful
 
-TODO: Write a gem description
+This gem is an OmniAuth Strategy for the Eventful API. Eventful uses OAuth 1.0,
+you can read about their authentication process here:  
+
+>[Eventful Authentication Docs](http://api.eventful.com/)
 
 ## Installation
 
@@ -18,7 +21,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Tell OmniAuth about this provider. For a Rails app, your config/initializers/omniauth.rb file should look like this:
+
+    Rails.application.config.middleware.use OmniAuth::Builder do
+      provider :eventful, "CONSUMER_KEY", "CONSUMER_SECRET", "APP_KEY"
+    end
+
+Replace "CONSUMER_KEY", "CONSUMER_SECRET" and "APP_KEY" with the appropriate values you obtain
+from [Requesting an App Key](http://api.eventful.com/keys/new).
+
+Make sure to set a route in your config/routes.rb file to handle the callback.
+For example:
+
+`get '/auth/:provider/callback', to: 'sessions#create'`
+
+Then, access the returned data in your Sessions Controller.
+For example:
+
+`omniauth_hash = request.env['omniauth.auth'].to_hash`<br>
+`name = omniauth['info']['name']`
+
+See an example of the Auth Hash available in request.env['omniauth.auth'] at:
+> [OmniAuth Auth Hash Schema](https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema)
+
+To see the output parameters for the Eventful User check out:
+> [User Data](http://api.eventful.com/docs/users/get)
 
 ## Contributing
 
