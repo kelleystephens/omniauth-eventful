@@ -22,10 +22,9 @@ module OmniAuth
       uid{ info[:username] }
 
       info do
-        name = [raw_info["user"]["first_name"], raw_info["user"]["last_name"]].compact.join(' ').strip
         {
           raw_info: raw_info,
-          name: name,
+          name: [raw_info["user"]["first_name"], raw_info["user"]["last_name"]].compact.join(' ').strip,
           username: raw_info["user"]["username"],
           bio: raw_info["user"]["bio"],
           hometown: raw_info["user"]["hometown"],
