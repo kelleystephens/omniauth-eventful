@@ -22,20 +22,23 @@ module OmniAuth
       uid{ info[:username] }
 
       info do
-        {
-          raw_info: raw_info,
-          name: [raw_info["user"]["first_name"], raw_info["user"]["last_name"]].compact.join(' ').strip,
-          username: raw_info["user"]["username"],
-          bio: raw_info["user"]["bio"],
-          hometown: raw_info["user"]["hometown"],
-          first_name: raw_info["user"]["first_name"],
-          last_name: raw_info["user"]["last_name"],
-          interests: raw_info["user"]["interests"],
-          images: raw_info["user"]["images"],
-          links: raw_info["user"]["links"],
-          locales: raw_info["user"]["locales"],
-          going: raw_info["user"]["going"]
-        }
+        if raw_info["user"].nil?
+          @raw_info
+        else
+          {
+            name: [@raw_info["user"]["first_name"], @raw_info["user"]["last_name"]].compact.join(' ').strip,
+            username: @raw_info["user"]["username"],
+            bio: @raw_info["user"]["bio"],
+            hometown: @raw_info["user"]["hometown"],
+            first_name: @raw_info["user"]["first_name"],
+            last_name: @raw_info["user"]["last_name"],
+            interests: @raw_info["user"]["interests"],
+            images: @raw_info["user"]["images"],
+            links: @raw_info["user"]["links"],
+            locales: @raw_info["user"]["locales"],
+            going: @raw_info["user"]["going"]
+          }
+        end
       end
 
       extra do
