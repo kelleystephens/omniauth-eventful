@@ -22,8 +22,9 @@ module OmniAuth
       uid{ info[:username] }
 
       info do
+        # If eventful returns a nil response, re-call the omniauth callback
         if raw_info["user"].nil?
-          @raw_info
+          callback_phase
         else
           {
             name: [@raw_info["user"]["first_name"], @raw_info["user"]["last_name"]].compact.join(' ').strip,
