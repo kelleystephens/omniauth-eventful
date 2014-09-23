@@ -1,4 +1,7 @@
 [![Build Status](https://travis-ci.org/kelleystephens/omniauth-eventful.svg?branch=master)](https://travis-ci.org/kelleystephens/omniauth-eventful)
+[![Gem Version](http://img.shields.io/badge/version-v0.0.1.pre-FF0DE3.svg)](https://rubygems.org/gems/omniauth-eventful)
+[![Downloads](http://ruby-gem-downloads-badge.herokuapp.com/omniauth-eventful?type=total)](https://rubygems.org/gems/omniauth-eventful)
+[![License](http://img.shields.io/badge/license-MIT-C707F7.svg)](http://opensource.org/licenses/MIT)
 
 
 # Omniauth::Eventful
