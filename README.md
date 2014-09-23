@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/kelleystephens/omniauth-eventful.svg?branch=master)](https://travis-ci.org/kelleystephens/omniauth-eventful)
+
+
 # Omniauth::Eventful
 
 This gem is an OmniAuth Strategy for the Eventful API. Eventful uses OAuth 1.0,
