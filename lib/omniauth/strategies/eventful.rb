@@ -22,24 +22,21 @@ module OmniAuth
       uid{ info[:username] }
 
       info do
-        # If eventful returns a nil response, re-call the omniauth callback
-        if raw_info["user"].nil?
-          callback_phase
-        else
-          {
-            name: [@raw_info["user"]["first_name"], @raw_info["user"]["last_name"]].compact.join(' ').strip,
-            username: @raw_info["user"]["username"],
-            bio: @raw_info["user"]["bio"],
-            hometown: @raw_info["user"]["hometown"],
-            first_name: @raw_info["user"]["first_name"],
-            last_name: @raw_info["user"]["last_name"],
-            interests: @raw_info["user"]["interests"],
-            images: @raw_info["user"]["images"],
-            links: @raw_info["user"]["links"],
-            locales: @raw_info["user"]["locales"],
-            going: @raw_info["user"]["going"]
-          }
-        end
+        user = raw_info["user"]
+        {
+          name: [user["first_name"], user["last_name"]].compact.join(' ').strip,
+          username: user["username"],
+          bio: user["bio"],
+          hometown: user["hometown"],
+          default_location: user["default_location"],
+          first_name: user["first_name"],
+          last_name: user["last_name"],
+          interests: user["interests"],
+          images: user["images"],
+          links: user["links"],
+          locales: user["locales"],
+          going: user["going"]
+        }
       end
 
       extra do
@@ -47,7 +44,12 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= MultiXml.parse(access_token.get("http://api.eventful.com/rest/users/get?app_key=#{options.app_key}&oath_consumer_key=#{options.consumer_key}").body)
+        @raw_info ||= MultiXml.parse(access_token.get("http://api.eventful.com/rest/users/get?app_key=#{options.app_key}").body)
+        if @raw_info.nil? || @raw_info["user"].nil?
+          @raw_info = nil
+          @raw_info = MultiXml.parse(access_token.get("http://api.eventful.com/rest/users/get?app_key=#{options.app_key}").body)
+        end
+        @raw_info
       end
     end
   end

@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Omniauth::Eventful::VERSION
   spec.authors       = ["Kelley Stephens"]
   spec.email         = ["kelley@kelleystephens.com"]
-  spec.summary       = %q{An Eventful strategy for OmniAuth}
-  spec.description   = %q{An Eventful strategy for OmniAuth}
+  spec.summary       = %q{An Eventful OAuth 1.0 strategy for OmniAuth}
+  spec.description   = %q{An Eventful OAuth 1.0 strategy for OmniAuth}
   spec.homepage      = "https://github.com/kelleystephens/omniauth-eventful"
   spec.license       = "MIT"
 
@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'omniauth', '~> 1.0'
   spec.add_dependency 'omniauth-oauth', '~> 1.0'
   spec.add_dependency "multi_xml", "~> 0.5"
-  spec.add_dependency 'multi_json', '~> 1.0'
+  spec.add_dependency 'multi_json', '~> 1.5.0'
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"
   spec.add_development_dependency 'rspec', '~> 2.7'
